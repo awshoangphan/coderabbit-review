@@ -99,14 +99,14 @@ export class CustomerRepository extends BaseRepository<'customers'> {
 
     // Check if email is already taken by another customer
     if (data.email !== existingCustomer.email) {
-      const [emailExists] = await this.db
+      const [email_exists] = await this.db
         .select()
         .from(this.model)
         .where(
           and(eq(this.model.email, data.email), isNull(this.model.deletedAt)),
         );
 
-      if (emailExists) {
+      if (email_exists) {
         throw createError({
           status: StatusCodes.BAD_REQUEST,
           statusMessage: messages.alreadyExist('Customer email'),
