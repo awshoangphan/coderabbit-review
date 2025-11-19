@@ -1,5 +1,5 @@
 language: "vi-VN"
-tone_instructions: "Be concise and focus on critical issues only. Avoid unnecessary pleasantries and get straight to the point."
+tone_instructions: "Be concise and focus on critical issues only. Avoid unnecessary pleasantries and get straight to the point. Follow the coding rules have been defined."
 early_access: false
 enable_free_tier: true
 
