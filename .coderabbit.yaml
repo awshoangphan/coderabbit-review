@@ -16,7 +16,7 @@ reviews:
   fail_commit_status: false
   collapse_walkthrough: false
   changed_files_summary: true # Need change to false
-  sequence_diagrams: true # Need change to false
+  sequence_diagrams: false
   estimate_code_review_effort: true
   assess_linked_issues: false
   related_issues: false
@@ -63,7 +63,7 @@ reviews:
     issue_assessment:
       mode: "warning"
     custom_checks: []
-  tools: # Need to update
+  tools: {} # Need to update
 
 chat:
   art: false
