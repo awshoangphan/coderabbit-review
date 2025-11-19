@@ -18,7 +18,7 @@
 
 Rules for variables, functions, classes in TypeScript/Node.js. Use camelCase for variables, PascalCase for classes/enums.
 
-- **Rule 1.1: Use camelCase for variables (REQUIRED)**  
+- **[TS-NAMING-001]: Use camelCase for variables (REQUIRED)**  
 Avoid snake_case or kebab-case.  
   
 // Bad
@@ -27,7 +27,7 @@ let first_name = 'John';
 // Good
 let firstName = 'John';
 
-- **Rule 1.2: Use meaningful names (REQUIRED)**
+- **[TS-NAMING-002]: Use meaningful names (REQUIRED)**
 Names should describe purpose, avoid single letters except loops.  
 
 // Bad
@@ -38,7 +38,7 @@ let b = 20;
 let firstName = 'John';
 let age = 20;
 
-- **Rule 1.3: Avoid overly long names (RECOMMENDED)**
+- **[TS-NAMING-003]: Avoid overly long names (RECOMMENDED)**
 Keep concise but descriptive; max 30 chars if possible.
 
 // Bad
