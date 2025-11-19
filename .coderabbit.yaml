@@ -78,7 +78,7 @@ knowledge_base:
     enabled: true
     filePatterns:
       - "**/.cursorrules"
-      - "CODING_STANDARDS.md"
+      - "**/CODING_STANDARDS.md"
   learnings:
     scope: "auto"
   issues:
