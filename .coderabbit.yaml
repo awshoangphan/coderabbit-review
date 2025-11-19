@@ -1,5 +1,5 @@
 language: "vi-VN"
-tone_instructions: "Be concise and focus on critical issues only. Avoid unnecessary pleasantries and get straight to the point."
+tone_instructions: "Be concise and focus on critical issues only. Avoid unnecessary pleasantries and get straight to the point. Follow the coding rules have been defined."
 early_access: false
 enable_free_tier: true
 
@@ -33,7 +33,12 @@ reviews:
     - "!**/.env*"
     - "!**/node_modules/**"
     - "!**/dist/**"  
-  path_instructions: [] # Need to update for each project
+  path_instructions: 
+    - path: "**/src/**"
+      instructions: |
+        Kiểm tra kỹ lưỡng dựa trên "CODING_STANDARDS.md".
+        Khi tìm thấy lỗi vi phạm quy chuẩn, BẮT BUỘC phải trích dẫn Rule ID ở đầu câu trả lời.
+        Format: "[RULE-ID] <Tên Rule>: <Giải thích bằng tiếng Việt>""
   abort_on_close: true
   disable_cache: false
   auto_review:
@@ -62,7 +67,10 @@ reviews:
       mode: "off"
     issue_assessment:
       mode: "warning"
-    custom_checks: []
+    custom_checks:
+      - name: "coding_rule_citation"
+        instructions: "Check against CODING_STANDARDS.md. Cite exact rule (e.g., 1.1 Naming) in feedback. Mode: warning for all violations."
+        mode: "warning"
   tools: {} # Need to update
 
 chat:
