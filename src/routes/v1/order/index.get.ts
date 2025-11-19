@@ -6,8 +6,8 @@ export default defineEventHandler(
   async (event): Promise<IOrderSearchResponse> => {
     const query = await readQuery(event, orderSearchSchema);
 
-    const orderRepo = new OrderRepository(event.context.db);
+    const order_repo = new OrderRepository(event.context.db);
 
-    return orderRepo.search(query, event.context.user);
+    return order_repo.search(query, event.context.user);
   },
 );
