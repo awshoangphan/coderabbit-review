@@ -63,7 +63,7 @@ reviews:
     issue_assessment:
       mode: "warning"
     custom_checks: []
-  tools: # Need to update
+  tools: {} # Need to update
 
 chat:
   art: false
