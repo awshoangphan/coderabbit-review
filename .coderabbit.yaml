@@ -15,7 +15,7 @@ reviews:
   commit_status: true
   fail_commit_status: false
   collapse_walkthrough: false
-  changed_files_summary: true # Need change to false
+  changed_files_summary: true
   sequence_diagrams: false
   estimate_code_review_effort: true
   assess_linked_issues: false
@@ -33,7 +33,7 @@ reviews:
     - "!**/.env*"
     - "!**/node_modules/**"
     - "!**/dist/**"  
-  path_instructions: [] # Need change to specific instructions
+  path_instructions: [] # Need to update for each project
   abort_on_close: true
   disable_cache: false
   auto_review:
@@ -78,7 +78,7 @@ knowledge_base:
     enabled: true
     filePatterns:
       - "**/.cursorrules"
-      - "**/CODING_STANDARDS.md"
+      - "CODING_STANDARDS.md"
   learnings:
     scope: "auto"
   issues:
