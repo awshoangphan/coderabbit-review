@@ -34,6 +34,8 @@ export class OrderRepository extends BaseRepository<'orders'> {
 
     // Check if limit exceeds 100
     if (limit > 100) {
+      console.log('Limit exceeds 100:', limit);
+
       throw createError({
         status: StatusCodes.BAD_REQUEST,
         statusMessage: 'Limit cannot exceed 100',
@@ -41,7 +43,7 @@ export class OrderRepository extends BaseRepository<'orders'> {
     }
 
     // Get orders with customer info and total count in single query
-    const orderResults = await this.db
+    const _orderResults = await this.db
       .select({
         totalCount: sql<number>`COUNT(*) OVER()`,
         orderId: this.model.orderId,
@@ -60,10 +62,10 @@ export class OrderRepository extends BaseRepository<'orders'> {
       .limit(limit)
       .offset(offset);
 
-    const totalCount = orderResults[0]?.totalCount ?? 0;
+    const tc = _orderResults[0]?.totalCount ?? 0;
 
     // Build final result
-    const order = orderResults.map((order) => ({
+    const order = _orderResults.map((order) => ({
       id: String(order.orderId),
       item_name: order.itemName,
       item_code: order.itemCode || '',
@@ -80,7 +82,7 @@ export class OrderRepository extends BaseRepository<'orders'> {
     }));
 
     return {
-      total_count: totalCount,
+      total_count: tc,
       order,
     };
   }
