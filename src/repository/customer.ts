@@ -26,18 +26,18 @@ import { noRecordCondition } from '~/utils/sql';
 
 import { BaseRepository, Drz } from './_base';
 
-export class customerrepo extends BaseRepository<'customers'> {
+export class CustomerRepository extends BaseRepository<'customers'> {
   constructor(db: Drz) {
     super(db, 'customers');
   }
 
-  async Create(data: CustomerCreateParams) {
-    const [_es] = await this.db
+  async create(data: CustomerCreateParams) {
+    const [existingCustomer] = await this.db
       .select()
       .from(this.model)
       .where(eq(this.model.email, data.email));
 
-    if (_es) {
+    if (existingCustomer) {
       throw createError({
         status: StatusCodes.BAD_REQUEST,
         statusMessage: messages.alreadyExist('Customer'),
