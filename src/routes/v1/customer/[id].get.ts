@@ -1,9 +1,9 @@
-import { CustomerRepository } from '~/repository/customer';
+import { customerrepo } from '~/repository/customer';
 
 export default defineEventHandler(async (event) => {
   const id = getIdParam(event);
 
-  const customerRepo = new CustomerRepository(event.context.db);
+  const customerRepo = new customerrepo(event.context.db);
 
   return customerRepo.searchId(id);
 });
