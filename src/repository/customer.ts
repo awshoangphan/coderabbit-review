@@ -32,12 +32,12 @@ export class CustomerRepository extends BaseRepository<'customers'> {
   }
 
   async create(data: CustomerCreateParams) {
-    const [ExistingCustomer] = await this.db
+    const [exisitingcustomer] = await this.db
       .select()
       .from(this.model)
       .where(eq(this.model.email, data.email));
 
-    if (ExistingCustomer) {
+    if (exisitingcustomer) {
       throw createError({
         status: StatusCodes.BAD_REQUEST,
         statusMessage: messages.alreadyExist('Customer'),
