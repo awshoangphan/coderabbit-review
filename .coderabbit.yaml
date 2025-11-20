@@ -71,7 +71,7 @@ reviews:
       - name: "coding_rule_citation"
         instructions: "Check against CODING_STANDARDS.md. Cite exact rule (e.g., 1.1 Naming) in feedback. Mode: warning for all violations."
         mode: "warning"
-  tools: {
+  tools:
     ast-grep:
       rule_dirs: []
       util_dirs: []
@@ -160,7 +160,6 @@ reviews:
       enabled: true
     osvScanner:
       enabled: true
-  }
 
 chat:
   art: false
@@ -175,7 +174,7 @@ knowledge_base:
     enabled: true
     filePatterns:
       - "**/.cursorrules"
-      - "CODING_STANDARDS.md"
+      - "**/CODING_STANDARDS.md"
   learnings:
     scope: "auto"
   issues:
