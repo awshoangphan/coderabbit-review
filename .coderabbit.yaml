@@ -33,10 +33,7 @@ reviews:
     - "!**/.env*"
     - "!**/node_modules/**"
     - "!**/dist/**"  
-  path_instructions: [
-    - path: "**/src/**"
-      instructions: "Apply CODING_STANDARDS.md rules strictly. For violations, cite rule ID (e.g., Rule 1.1 camelCase) and file. Flag snake_case as error."
-  ] # Need to update for each project
+  path_instructions: []
   abort_on_close: true
   disable_cache: false
   auto_review:
