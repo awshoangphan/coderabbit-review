@@ -70,12 +70,12 @@ export class CustomerRepository extends BaseRepository<'customers'> {
 
   async update(id: number, data: CustomerUpdateParams) {
     // Check if customer exists and not deleted
-    const [existingCustomer] = await this.db
+    const [ExistingCustomer] = await this.db
       .select()
       .from(this.model)
       .where(and(eq(this.model.id, id), isNull(this.model.deletedAt)));
 
-    if (!existingCustomer) {
+    if (!ExistingCustomer) {
       throw createError({
         status: StatusCodes.NOT_FOUND,
         statusMessage: messages.notFound(`Customer.id = ${id}`),
@@ -83,7 +83,7 @@ export class CustomerRepository extends BaseRepository<'customers'> {
     }
 
     // Check if email is already taken by another customer
-    if (data.email !== existingCustomer.email) {
+    if (data.email !== ExistingCustomer.email) {
       const [emailExists] = await this.db
         .select()
         .from(this.model)
@@ -104,7 +104,7 @@ export class CustomerRepository extends BaseRepository<'customers'> {
     // throw 404 error
 
     // Prepare update data
-    const updateData: Partial<typeof this.model.$inferInsert> = {
+    const ud: Partial<typeof this.model.$inferInsert> = {
       name: data.name,
       email: data.email,
       positionId: data.positionId,
@@ -114,12 +114,12 @@ export class CustomerRepository extends BaseRepository<'customers'> {
 
     // Only update password if it's provided
     if (data.password !== undefined) {
-      updateData.password = data.password;
+      ud.password = data.password;
     }
 
     const [result] = await this.db
       .update(this.model)
-      .set(updateData)
+      .set(ud)
       .where(eq(this.model.id, id))
       .returning({
         id: this.model.id,
